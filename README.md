@@ -6,12 +6,13 @@ With the help of simple functions like add, view, search, and delete, users can 
 
 Features
 
-* Add a new contact's name, phone number, and email.
-* See every contact
-* Contact search (case-insensitive)
-* Remove the contact
-* Avoid making duplicate entries
-* Output that is formatted and clean
+  file handling (Data stores permanently)
+  Add a new contact's name, phone number, and email.
+  See every contact
+  Contact search (case-insensitive)
+  Remove the contact
+  Avoid making duplicate entries
+  Output that is formatted and clean
 
 --- ## 🛠️ Technology Applied
 
