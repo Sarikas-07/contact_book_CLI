@@ -1,4 +1,17 @@
 contacts = []
+try :
+    file = open("contacts.txt","r")
+    for line in file :
+        name, phone, email = line.strip().split(",")
+        contact = {
+            "name" : name,
+            "phone" : phone,
+            "email" : email
+        }
+        contacts.append(contact)
+    file.close()
+except FileNotFoundError :
+    pass 
 while True :
     print("============================Contact Book ===========================================")
     print("1. Add Contact")
@@ -26,9 +39,14 @@ while True :
                 "name" : name,
                 "phone" : phone,
                 "email" : email
-            }
+            } 
             contacts.append(contact)
+            file = open("contacts.txt","a")
+            file.write(name + "," + phone + "," + email + "\n")
+            file.close() 
             print("Contact Added Successfully !!")
+           
+
 
 
     elif choice=='2': #view contact
@@ -59,18 +77,29 @@ while True :
             print("Contact not found !!")
 
 
-    elif choice== '4': #delete contact 
-        delete_name = input("Enter name to delete :")
+    elif choice == '4': #delete contact 
+        delete_name = input("Enter name to delete: ")
+    
         found = False
+        new_contacts = []
 
         for contact in contacts:
             if contact["name"].lower() == delete_name.lower():
-                contacts.remove(contact)
-                print("Contact Deleted Successfully!")
-                found =True
-                break
-        if not found :
-            print("Contact not found ")
+                found = True
+            else:
+                new_contacts.append(contact)
+
+        if found:
+            contacts = new_contacts   # update list
+
+            file = open("contacts.txt", "w")
+            for c in contacts:
+                file.write(f"{c['name']},{c['phone']},{c['email']}\n")
+            file.close()
+
+            print("Contact Deleted Successfully!")
+        else:
+            print("Contact not found")
 
             
     elif choice =='5':
